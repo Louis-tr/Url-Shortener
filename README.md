@@ -11,7 +11,7 @@ Just paste your url into the input and click the "Shorten" button. The input wil
 
 ## Dependencies
 
-- [Python 3.6 or higher](https://www.python.org/)
+- [Python 3.6 or higher](https://www.python.org/)    
 `pip install -U -r requirements.txt`
 
 ## Hosting
