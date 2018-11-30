@@ -29,7 +29,7 @@ async def shorten(request):
         "original": data["url"]
     }).run(app.db.con)
 
-    return web.Response(text=f"{request.host}/{id}")
+    return web.Response(text=f"https://{request.host}/{id}")
 
 
 @routes.get("/{id}")
