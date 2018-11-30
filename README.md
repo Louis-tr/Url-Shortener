@@ -1,7 +1,6 @@
-# urls.discord.club
+# Url-Shortener
 
-A small url "shortener". It's mainly used by other Magic Bots applications.
-The resulting url isn't really short, but shorter than other urls :D
+A small url "shortener". The length of the resulting urls do obviously depend on the length of your domain and the id length set in the config.
 
 ## Dependencies
 
