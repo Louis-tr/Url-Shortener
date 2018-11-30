@@ -1,6 +1,8 @@
-.container {
-    width: 50vw;
-    margin: auto;
+@media (min-width: 1000px) {
+    .container {
+        width: 50vw;
+        margin: auto;
+    }
 }
 
 .content {
