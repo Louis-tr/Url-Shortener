@@ -17,15 +17,16 @@ async def index(request):
     return jinja2.render_template("/index.html", request, {})
 
 
-@routes.get("/shorten")
+@routes.post("/shorten")
 async def shorten(request):
-    if request.query.get("url") is None:
-        return web.Response(text="")
+    data = await request.post()
+    if data.get("url") is None:
+        raise web.HTTPBadRequest()
 
     id = random_id()
     await app.db.rdb.table("urls").insert({
         "id": id,
-        "original": request.query.get("url")
+        "original": data["url"]
     }).run(app.db.con)
 
     return web.Response(text=f"{request.host}/{id}")

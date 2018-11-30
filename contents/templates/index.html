@@ -11,9 +11,10 @@
 </div>
 <script>
     $("#shorten").click(function() {
-        $.get("/shorten?url=" + $("#url").val(), function(data) {
-            $("#url").val(data);
-        });
+        $.post("/shorten", {"url": $("#url").val()})
+            .done(function(data) {
+                $("#url").val(data)
+            });
     });
 </script>
 {% endblock content %}
