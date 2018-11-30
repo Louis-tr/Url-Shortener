@@ -2,6 +2,13 @@
 
 A small url "shortener". The length of the resulting urls do obviously depend on the length of your domain and the id length set in the config.
 
+# How to shorten an url
+## Api
+You can use the /shorten endpoint to shorten an url. Just make a post request to that endpoint and provide the "url" key with the original url. You will get back the new url in plain text.
+
+## Web
+Just paste your url into the input and click the "Shorten" button. The input will be updated to the resulting url.
+
 ## Dependencies
 
 - [Python 3.6 or higher](https://www.python.org/)
