@@ -1,28 +1,23 @@
-import aiofiles as aiof
 import json
+import traceback
 import os
+import asyncio
 
 import config
 
 
-async def add_url(id, url):
-    urls = await get_urls()
-    urls[id] = url
-    async with aiof.open(config.file, "w") as f:
-        await f.write(json.dumps(urls))
-        await f.close()
-
-    return True
+urls = {}
+if os.path.isfile(config.file):
+    with open(config.file) as f:
+        urls = json.load(f)
 
 
-async def get_url(id):
-    urls = await get_urls()
-    return urls.get(id)
-
-
-async def get_urls():
-    if not os.path.isfile(config.file):
-        return {}
-
-    async with aiof.open(config.file, "r") as f:
-        return json.loads(await f.read())
+async def save_loop():
+    while True:
+        try:
+            await asyncio.sleep(10)
+            with open(config.file, "w") as f:
+                json.dump(urls, f)
+                f.close()
+        except:
+            traceback.print_exc()

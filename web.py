@@ -3,6 +3,7 @@ import aiohttp_jinja2
 import jinja2
 
 import routes
+import url_manager
 
 
 startup_sites = [routes]
@@ -20,6 +21,7 @@ class App(web.Application):
 
     async def prepare(self, app):
         app["http_session"] = ClientSession()
+        app.loop.create_task(url_manager.save_loop())
 
         for site in startup_sites:
             await site.setup(app)
