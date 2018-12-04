@@ -25,17 +25,24 @@ async def _shorten(request):
     if data.get("url") is None:
         raise web.HTTPBadRequest()
 
+    url = urlparse(data["url"])
+    if url.netloc == request.host:
+        return web.Response(text=urlunparse(url))
+
+    if url.scheme == "":
+        url = url._replace(scheme="http")
+
     id = random_id()
-    await urls.add_url(id, data["url"])
+    urls[id] = urlunparse(url)
 
     return web.Response(text=f"{request.scheme}://{request.host}/{id}")
 
 
 @routes.get("/{id}")
 async def _urls(request):
-    id = request.match_info['id']
+    id = request.match_info['id'].lower()
 
-    url = await urls.get_url(id)
+    url = urls.get(id)
     if url is None:
         raise web.HTTPNotFound()
 
