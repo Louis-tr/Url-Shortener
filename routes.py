@@ -1,17 +1,17 @@
 from aiohttp import web
 import aiohttp_jinja2 as jinja2
-import random
-import string
+import names
+from urllib.parse import urlparse, urlunparse
 
-import url_manager as urls
-import config
+from url_manager import urls
 
 
 routes = web.RouteTableDef()
 
 
 def random_id():
-    return "".join([random.choice(string.digits + string.ascii_lowercase) for i in range(config.id_length)])
+    return names.get_first_name(gender='female').lower()
+    # return "".join([random.choice(string.digits + string.ascii_lowercase) for i in range(config.id_length)])
 
 
 @routes.get("/")
