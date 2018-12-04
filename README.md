@@ -1,6 +1,6 @@
 # Url-Shortener
 
-A small url "shortener". The length of the resulting urls do obviously depend on the length of your domain and the id length set in the config.
+A small url "shortener". The length of the resulting urls does obviously depend on the length of your domain and the id length set in the config.
 
 ## Dependencies
 
