@@ -1,13 +1,9 @@
 # Url-Shortener
 
-A small url "shortener". The length of the resulting urls does obviously depend on the length of your domain and the id length set in the config.
+An Url-Shortener built with aiohttp and mongodb.
 
-# How to shorten an url
-## Api
-You can use the `/shorten` endpoint to shorten an url. Just make a post request to that endpoint and provide the "url" key with the original url. You will get back the new url in plain text.
-
-## Web
-I added a basic frontend to test the application. Just paste your url into the input and click the "Shorten" button. The input will be updated to the resulting url.
+# Api
+You can use the `/shorten` endpoint to shorten an url. Just make a post request and provide the "url" key with the original url. You will get back the new url in json format.
 
 ## Dependencies
 
@@ -24,7 +20,7 @@ These are steps to host this website yourself.
 
 - Clone this repository or download it as a zip and extract it
 
-- Open the cmd, navigate in the directory of the website and run the following commands:
+- Open the cmd, navigate in the directory of the website and run the following command:
   - `python -m pip install -r requirements.txt`
 
 - Run the web.py file with the `python web.py` command.
